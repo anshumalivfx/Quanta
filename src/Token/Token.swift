@@ -1,6 +1,6 @@
 import Foundation
 
-enum TokenType {
+public enum TokenType {
     case TOKEN_ID
     case TOKEN_EQUALS
     case TOKEN_STRING
@@ -15,6 +15,7 @@ public struct TOKEN {
 }
 
 
-public func init_token(type: Int, value: String) -> TOKEN {
-    return TOKEN(type: TokenType.TOKEN_ID, value: "")
+public func init_token(type: TokenType, value: String) -> TOKEN {
+    let token: TOKEN = TOKEN(type: type, value: value)
+    return token
 }
