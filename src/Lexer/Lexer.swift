@@ -40,6 +40,19 @@ public func lexer_get_next_token(lexer: inout LEXER) -> TOKEN {
             case "=": 
             var token = init_token(type: TokenType.TOKEN_EQUALS, value: lexer_get_current_char_as_string(lexer: &lexer))
             return lexer_advanced_with_token(lexer: &lexer, token: &token)
+
+            case ";":
+            var token = init_token(type: TokenType.TOKEN_SEMI, value: lexer_get_current_char_as_string(lexer: &lexer))
+            return lexer_advanced_with_token(lexer: &lexer, token: &token)
+
+            case "{":
+            var token = init_token(type: TokenType.TOKEN_LPAREN, value: lexer_get_current_char_as_string(lexer: &lexer))
+            return lexer_advanced_with_token(lexer: &lexer, token: &token)
+
+            case "}":
+            var token = init_token(type: TokenType.TOKEN_RPAREN, value: lexer_get_current_char_as_string(lexer: &lexer))
+            return lexer_advanced_with_token(lexer: &lexer, token: &token)
+
             
             default:
                 break
