@@ -1,10 +1,10 @@
-# Makefile for building Swift project
-
 # Variables
 SRC_DIR = src
 BUILD_DIR = build
-EXECUTABLE = $(BUILD_DIR)/Quanta
-SWIFT_FILES = $(wildcard $(SRC_DIR)/*.swift)
+EXECUTABLE = $(BUILD_DIR)/quanta
+
+# Find all .swift files in src directory and its subdirectories
+SWIFT_FILES = $(shell find $(SRC_DIR) -name "*.swift")
 
 # Default target
 all: $(EXECUTABLE)

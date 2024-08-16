@@ -1,1 +1,3 @@
-print("hello World")
+let file = NewFile()
+
+file.newFunction()
