@@ -10,8 +10,8 @@ enum TokenType {
 }
 
 public struct TOKEN {
-    let type: TokenType
-    let value: String
+    var type: TokenType
+    var value: String
 }
 
 
