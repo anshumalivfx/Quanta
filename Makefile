@@ -14,6 +14,10 @@ $(EXECUTABLE): $(SWIFT_FILES)
 	mkdir -p $(BUILD_DIR)
 	swiftc -o $(EXECUTABLE) $(SWIFT_FILES)
 
+
+install:
+	cp $(EXECUTABLE) /usr/local/bin/quanta
+
 # Clean target: Remove build artifacts
 clean:
 	rm -rf $(BUILD_DIR)
