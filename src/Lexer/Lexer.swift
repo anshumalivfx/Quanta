@@ -35,6 +35,10 @@ public func lexer_get_next_token(lexer: inout LEXER) -> TOKEN {
     while (lexer.c != "\0" && lexer.i < lexer.contents.count ) {
         if (lexer.c == " " || lexer.c == "\n" || lexer.c == "\t" || lexer.c == "\r") {
             lexer_skip_whitespace(lexer: &lexer)
+        }
+            if (lexer.c == "\""){
+                return lexer_collect_string(lexer: &lexer)
+            }
 
             switch lexer.c {
             case "=": 
@@ -53,20 +57,34 @@ public func lexer_get_next_token(lexer: inout LEXER) -> TOKEN {
             var token = init_token(type: TokenType.TOKEN_RPAREN, value: lexer_get_current_char_as_string(lexer: &lexer))
             return lexer_advanced_with_token(lexer: &lexer, token: &token)
 
-            
+
             default:
                 break
             }
-        }
+        
     }
 
     return TOKEN(type: TokenType.TOKEN_ID, value: "")
 }
 
 public func lexer_collect_string(lexer: inout LEXER) -> TOKEN {
-    return TOKEN(type: TokenType.TOKEN_ID, value: "")
+    lexer_advance(lexer: &lexer)
+
+    var value = ""
+    
+    while (lexer.c != "\""){
+        let s = lexer_get_current_char_as_string(lexer: &lexer)
+        value.append(s)
+
+    }
+
+    lexer_advance(lexer: &lexer)
+    return init_token(type: TokenType.TOKEN_STRING, value: value)
 }
 
 public func lexer_get_current_char_as_string(lexer: inout  LEXER) -> String {
-    return ""
+    var str = ""
+    str = String(lexer.c)
+    return str
+    
 }
