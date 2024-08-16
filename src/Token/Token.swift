@@ -7,6 +7,7 @@ public enum TokenType {
     case TOKEN_SEMI
     case TOKEN_LPAREN
     case TOKEN_RPAREN
+    case TOKEN_EOF
 }
 
 public struct TOKEN {

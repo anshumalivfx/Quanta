@@ -36,6 +36,9 @@ public func lexer_get_next_token(lexer: inout LEXER) -> TOKEN {
         if (lexer.c == " " || lexer.c == "\n" || lexer.c == "\t" || lexer.c == "\r") {
             lexer_skip_whitespace(lexer: &lexer)
         }
+            if (lexer.c.isAlphanumeric){
+                return lexer_collect_id(lexer: &lexer)
+            }
             if (lexer.c == "\""){
                 return lexer_collect_string(lexer: &lexer)
             }
@@ -64,7 +67,7 @@ public func lexer_get_next_token(lexer: inout LEXER) -> TOKEN {
         
     }
 
-    return TOKEN(type: TokenType.TOKEN_ID, value: "")
+    return init_token(type: TokenType.TOKEN_EOF, value: "")
 }
 
 public func lexer_collect_string(lexer: inout LEXER) -> TOKEN {
@@ -87,4 +90,20 @@ public func lexer_get_current_char_as_string(lexer: inout  LEXER) -> String {
     str = String(lexer.c)
     return str
     
+}
+
+
+public func lexer_collect_id(lexer: inout LEXER) -> TOKEN {
+    lexer_advance(lexer: &lexer)
+
+    var value = ""
+    
+    while (lexer.c.isAlphanumeric){
+        let s = lexer_get_current_char_as_string(lexer: &lexer)
+        value.append(s)
+
+    }
+
+    lexer_advance(lexer: &lexer)
+    return init_token(type: TokenType.TOKEN_ID, value: value)
 }
