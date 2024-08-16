@@ -67,7 +67,7 @@ Quanta is licensed under the MIT License. See the [LICENSE](LICENSE) file for mo
 
 ## Contact
 
-For questions, suggestions, or feedback, reach out to us at [contact@quanta-lang.org](mailto:contact@quanta-lang.org).
+For questions, suggestions, or feedback, reach out to us at [anshumali.karna99@gmail.com](mailto:anshumali.karna99@gmail.com).
 
 ---
 
